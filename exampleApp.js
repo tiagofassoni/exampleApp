@@ -7,7 +7,7 @@ function createHomework(operator,minNum,maxNum,numberOfProblems) {
     random2 = Math.floor(Math.random() * (+maxNum - +minNum) + +minNum);
     homeworkArray.push(random1 + ' ' + operator + ' ' + random2 + ' = ☐');
   }
-  console.log(homeworkArray);
+  return(homeworkArray);
 }
 
 createHomework('+',1,7,10);
