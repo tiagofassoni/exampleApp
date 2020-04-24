@@ -5,9 +5,64 @@
     <meta name="viewport" content="width=device-width">
     <title>exampleApp</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
   </head>
   <body>
     <script src="exampleApp.js"></script>
-    <button class="center" styletype="button" onclick="document.write(createHomework('÷',10,21,10))">Create Homework</button>
+    <script>
+    </script>
+    <h6 id='resultOfCalculation'></h6>
+    <form>
+      <div>
+        <label for="name">Enter Operation</label>
+        <input type="text" name="Operation" id="operation" required>
+      </div>
+      <div>
+        <label for="name">Enter first parameter</label>
+        <input type="number" name="First Parameter" id="firstParam" required>
+      </div>
+      <div>
+        <label for="email">Enter second parameter</label>
+        <input type="number" name="Second Parameter" id="secondParam" required>
+      </div>
+      <div>
+        <label for="email">Number of Problems</label>
+        <input type="number" name="Number of Problems" id="numberOfProblems" required>
+      </div>
+      <div>
+        <button id="buttonSubmit" type="button" value="Calculate!">Press this to calculate, damn!</button>
+      </div>
+    </form>
+    <!-- <button class="center" styletype="button" onclick="document.write(createHomework('÷',10,21,10))">Create Homework</button> -->
+    <script>
+      function createHomework(operator,minNum,maxNum,numberOfProblems) {
+        let homeworkArray = [];
+        let random1 = 0;
+        let random2 = 0;
+        for (let i = 0; i < numberOfProblems; i ++) {
+          random1 = Math.floor(Math.random() * (+maxNum - +minNum) + +minNum);
+          random2 = Math.floor(Math.random() * (+maxNum - +minNum) + +minNum);
+          homeworkArray.push(random1 + ' ' + operator + ' ' + random2 + ' = ☐');
+        }
+        return(homeworkArray);
+      };
+
+    $('#buttonSubmit').click(
+      function () {
+        console.log('First parameter is: ' + $('#firstParam')[0].value + ' second parameter is ' + $('#secondParam')[0].value);
+        console.log('Operation is: ' + $('#operation')[0].value + ' number of problems is ' + $('#numberOfProblems')[0].value);
+        console.dir($('#firstParam'));
+
+        let firstParam = $('#firstParam')[0].value;
+        let secondParam = $('#secondParam')[0].value;
+        let operation = $('#operation')[0].value;
+        let numberOfProblems = $('#numberOfProblems')[0].value;
+
+        $('#resultOfCalculation').html(createHomework(operation, firstParam, secondParam, numberOfProblems));
+      }
+
+    );
+    // createHomework('+',1,7,10);
+    </script>
   </body>
   </html>
